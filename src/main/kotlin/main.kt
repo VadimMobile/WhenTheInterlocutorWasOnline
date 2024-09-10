@@ -1,15 +1,14 @@
 fun main() {
-    agoToText(52)
+    agoToText(66)
 }
 
 fun agoToText(second: Int) {
-    val whenWasIt = " "
-    when (whenWasIt) {
-        println("был(а) только что").toString() -> 0 <= second && second <= 60
-        minutesAgo(second).toString() -> 60 <= second && second <= 60 * 60
-        hoursAgo(second).toString() -> 60 * 60 + 1 <= second && second <= 24 * 60 * 60
-        println("был(а) вчера").toString() -> 24 * 60 * 60 + 1 <= second && second <= 24 * 60 * 60 * 2
-        println("был(а) позавчера").toString() -> 24 * 60 * 60 * 2 + 1 <= second && second <= 24 * 60 * 60 * 3
+    when {
+        0 <= second && second <= 60 -> println("был(а) только что")
+        60 <= second && second <= 60 * 60 -> minutesAgo(second)
+        60 * 60 + 1 <= second && second <= 24 * 60 * 60 -> hoursAgo(second)
+        24 * 60 * 60 + 1 <= second && second <= 24 * 60 * 60 * 2 -> println("был(а) вчера")
+        24 * 60 * 60 * 2 + 1 <= second && second <= 24 * 60 * 60 * 3 -> println("был(а) позавчера")
         else -> println("был(а) давно")
     }
 }
